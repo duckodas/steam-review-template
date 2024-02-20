@@ -40,15 +40,11 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
-      - name: Install pnpm
-        run: |
-          npm install -g pnpm
-          export PATH=$PATH:$(npm bin -g)
       - name: Install dependencies
-        run: pnpm install
+        run: npx pnpm install
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
-        run: pnpm run build
+        run: npx pnpm run build
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
